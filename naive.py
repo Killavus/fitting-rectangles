@@ -1,4 +1,4 @@
-from common.bounding_ribbon import *
+from common.bounding_ribbon import BoundingRibbon
 
 class NaiveRectangleFit:
     def __init__(self, rectangles):
