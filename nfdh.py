@@ -6,6 +6,9 @@ class NextDecreasingRectangleFit:
             list(reversed(sorted(rectangles, key=lambda r: r.h())))
         )
 
+    def height(self):
+        return self.naive.last_height()
+
     def initial_guess(self):
         return self.naive.initial_guess()
 

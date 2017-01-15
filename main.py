@@ -7,6 +7,8 @@ from naive import NaiveRectangleFit
 from nfdh import NextDecreasingRectangleFit
 from ffdh import FirstDecreasingRectangleFit
 
+from scipy import optimize
+
 def choose_algorithm(identifier):
     return {
         'naive': NaiveRectangleFit,
@@ -36,8 +38,17 @@ if not algorithm:
     sys.exit(1)    
 
 rectangles = read_rectangles()
+algorithm_instance = algorithm(rectangles)
 if options.test:
-    algorithm_instance = algorithm(rectangles)
     print algorithm_instance(options.test, True)
 else:
-    pass
+    minimized = optimize.minimize(
+        algorithm_instance,
+        algorithm_instance.initial_guess(),
+        'SLSQP',
+        options={ 'disp': True }
+    )
+
+    print minimized
+    print "W:", minimized['x'][0], "H:", algorithm_instance.last_height(), "Area:", minimized['fun'][0]
+

@@ -17,7 +17,7 @@ class BoundingRibbon:
     def bound(self):
         return self.max_width
 
-    def area(self):
+    def height(self):
         height = float('-inf')
 
         for (x, y) in self.contents:
@@ -26,7 +26,10 @@ class BoundingRibbon:
                 height 
             )
 
-        return self.bound() * height
+        return height
+
+    def area(self):
+        return self.bound() * self.height()
 
     def debug(self):
         for pos in self._pos_in_order:

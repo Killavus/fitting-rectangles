@@ -9,11 +9,15 @@ class NaiveRectangleFit:
     def initial_guess(self):
         return self.upper_bound / 2
 
+    def last_height(self):
+        return self.last_ribbon.height()
+
     def __call__(self, max_width, debug = False):
         if max_width < self.lower_bound or max_width > self.upper_bound:
             return float('inf')
 
-        ribbon = BoundingRibbon(max_width)
+        self.last_ribbon = BoundingRibbon(max_width)
+        ribbon = self.last_ribbon
         current_level_h = 0.0
         current_level_x = 0.0
         current_index = 0

@@ -9,7 +9,10 @@ class FirstDecreasingRectangleFit:
     def initial_guess(self):
         return self.upper_bound / 2
 
-    def __call__(self, max_width, debug = False):
+    def last_height(self):
+        return self.last_ribbon.height()
+
+    def __call__(self, max_width, *args):
         if max_width < self.lower_bound or max_width > self.upper_bound:
             return float('inf')
 
@@ -17,7 +20,8 @@ class FirstDecreasingRectangleFit:
         heights = [0.0]
         current_index = 0
         open_level_maximum_h = float('-inf')
-        ribbon = BoundingRibbon(max_width)
+        self.last_ribbon = BoundingRibbon(max_width)
+        ribbon = self.last_ribbon
 
         while current_index < len(self.rectangles):
             rectangle = self.rectangles[current_index]
@@ -41,7 +45,4 @@ class FirstDecreasingRectangleFit:
                 heights.append(heights[-1] + open_level_maximum_h)
                 open_level_maximum_h = float('-inf')
         
-        if debug:
-            ribbon.debug()
-
         return ribbon.area()
