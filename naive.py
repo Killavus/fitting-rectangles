@@ -3,18 +3,19 @@ from common.bounding_ribbon import *
 class NaiveRectangleFit:
     def __init__(self, rectangles):
         self.rectangles = rectangles
-        self.minimum_width = max(map(lambda r: r.w(), self.rectangles))
+        self.lower_bound = max(map(lambda r: r.w(), self.rectangles))
+        self.upper_bound = float(sum(map(lambda r: r.w(), self.rectangles)))
 
     def initial_guess(self):
-        return self.minimum_width
+        return self.upper_bound / 2
 
     def __call__(self, max_width, debug = False):
-        if max_width < self.minimum_width:
+        if max_width < self.lower_bound or max_width > self.upper_bound:
             return float('inf')
 
         ribbon = BoundingRibbon(max_width)
-        current_level_h = 0
-        current_level_x = 0
+        current_level_h = 0.0
+        current_level_x = 0.0
         current_index = 0
         maximum_h_for_level = float('-inf')
 
@@ -30,7 +31,7 @@ class NaiveRectangleFit:
                 maximum_h_for_level = max(rectangle.h(), maximum_h_for_level)
             else:
                 current_level_h += maximum_h_for_level
-                current_level_x = 0
+                current_level_x = 0.0
                 maximum_h_for_level = float('-inf')
 
         if debug:

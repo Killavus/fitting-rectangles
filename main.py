@@ -1,11 +1,13 @@
 import sys
 from common.read_input import read_rectangles
 from naive import NaiveRectangleFit
+from nfdh import NextDecreasingRectangleFit
 from optparse import OptionParser
 
 def choose_algorithm(identifier):
     return {
         'naive': NaiveRectangleFit,
+        'nfdh': NextDecreasingRectangleFit
     }[identifier]
 
 def start():
