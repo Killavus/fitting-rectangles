@@ -1,6 +1,6 @@
 def rect_overlaps(fst_pos, snd_pos, fst_rect, snd_rect):
     fst_x, fst_y = fst_pos
-    snd_x, snd_y = snd_pox
+    snd_x, snd_y = snd_pos
     fst_w, fst_h = fst_rect.w(), fst_rect.h()
     snd_w, snd_h = snd_rect.w(), snd_rect.h()
 
