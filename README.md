@@ -13,7 +13,7 @@ Since packing problems like this problem can have many formulations & variants, 
 
 Minimalisation problem stated that way cannot be solved using typical linear programming techniques - at least without adding additional constraints. But there are effective (`O(n)` or `O(n * log(n))` algorithms finding an approximate result for _ribbon-fit_ problem. A _ribbon_ is a sub-surface of width `W` where we try to fit rectangles (similar constraints as in _Rectangle-Fit_ problem), minimizing the `y` position (effective _height_) of the top-most corner of rectangle placed in that way.
 
-That may find a good approximate for _bounding rectangle_ area I'm looking for. But we don't know what `W` to choose to find an optimal _bounding rectangle_. Here, meta-heuristics come into play. _Simulated annealing_ is used to traverse solution space, finding optimal `W` (using meta-heuristics) and `H` (using heuristic algorithm from _bounding-ribbon_ problem).
+That may find a good approximate for _bounding rectangle_ area I'm looking for. But we don't know what `W` to choose to find an optimal _bounding rectangle_. Here, meta-heuristics come into play. _Nelder-Mead method_ is used to traverse solution space, finding optimal `W` (using meta-heuristics) and `H` (using heuristic algorithm from _bounding-ribbon_ problem).
 
 ## Installation
 
