@@ -1,6 +1,6 @@
 # Solving _Rectangle-Fit_ problem
 
-This repository focuses on solving the well-known problem of [Rectangle-Fit](https://en.wikipedia.org/wiki/Packing_problems#Different_rectangles_in_a_rectangle). Problem is known to be NP-hard, so a meta-heuristic approach called [_simulated annealing_](https://en.wikipedia.org/wiki/Simulated_annealing) is used to find a near-optimal solution.
+This repository focuses on solving the well-known problem of [Rectangle-Fit](https://en.wikipedia.org/wiki/Packing_problems#Different_rectangles_in_a_rectangle). Problem is known to be NP-hard, so a meta-heuristic approach called [Nelder-Mead method](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method) is used to find a near-optimal solution.
 
 ## Problem instance
 
@@ -48,16 +48,14 @@ Program then waits for your input, which are pairs of width & height for rectang
 is a valid input. You can use `<` to easily feed file contents to this script:
 
 ```
-python main.py -t 5.0 nfdh < test/simple.in
+python main.py -t 5.0 nfdh < test/simple1.in
 ```
 
-* normal mode, where simulating annealing is used to find the solution:
+* normal mode, where Nelder-Mead is used to find the solution:
 
 ```
-python main.py nfdh < test/simple.in
+python main.py nfdh < test/simple1.in
 ```
-
-TODO: modify SA options
 
 ## Heuristics overview:
 
